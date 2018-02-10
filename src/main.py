@@ -19,8 +19,7 @@ def create_handler(endpoint):
 
 with open(filepath) as json_data:
 	data = json.load(json_data)
-	for endpoint in data:
-		create_handler(endpoint)
+	[create_handler(x) for x in data]
 
 @app.route('/ping')
 def index():
