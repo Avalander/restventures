@@ -1,7 +1,7 @@
 [{
 	"text": "You have been walking for a while. It's getting dark and you reach the end of the road. There is an old house at the end of the road, and a path that goes into the forest towards east.",
 	"_self": {
-		"href": "/",
+		"href": "/road",
 		"ref": "road",
 		"method": "GET"
 	},
@@ -15,10 +15,27 @@
 		"method": "GET"
 	}]
 }, {
-	"text": "As you walk through the gates, the air gets colder and you start shivering. You have the feeling that something terrible is about to happen.",
+	"text": "As you walk through the door, the air gets colder and you start shivering. You have the feeling that something terrible is about to happen.",
 	"_self": {
-		"href": "/castle",
-		"ref": "castle",
+		"href": "/house",
+		"ref": "house",
 		"method": "GET"
-	}
+	},
+	"_links": [{
+		"href": "/road",
+		"ref": "back",
+		"method": "GET"
+	}]
+}, {
+	"text": "There is something unsettling about this forest, but you can't put your finger on what it is.",
+	"_self": {
+		"href": "/forest",
+		"ref": "forest",
+		"method": "GET"
+	},
+	"_links": [{
+		"href": "/road",
+		"ref": "road",
+		"method": "GET"
+	}]
 }]

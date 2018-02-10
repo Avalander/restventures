@@ -1,6 +1,6 @@
 import json
 import os.path
-from flask import Flask
+from flask import Flask, render_template
 
 
 app = Flask(__name__)
@@ -14,7 +14,7 @@ def create_handler(endpoint):
 
 	@app.route(path, methods=[method], endpoint=path)
 	def handler():
-		return json.dumps(data)
+		return json.dumps(endpoint)
 	return handler
 
 with open(filepath) as json_data:
@@ -24,3 +24,7 @@ with open(filepath) as json_data:
 @app.route('/ping')
 def index():
 	return 'Pong'
+
+@app.route('/')
+def client():
+	return render_template('client.html')

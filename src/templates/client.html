@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Restventures</title>
+</head>
+<body>
+	<div>
+		<p id="text"></p>
+	</div>
+	<ul id="actions"></ul>
+</body>
+
+<script>
+	const updateDom = res => {
+		document.querySelector('#text').innerHTML = res.text
+		document.querySelector('#actions').innerHTML = res._links.map(({ href, method }) =>
+				`<li><a href="#" onclick="fetchJson('${href}', '${method}')">${method} ${href}</a></li>`).join('')
+	}
+
+	const fetchJson = (path, method='GET') => fetch(path, { method })
+		.then(res => res.json())
+		.then(updateDom)
+
+	document.body.onload = () => fetchJson('/road')
+</script>
+</html>
