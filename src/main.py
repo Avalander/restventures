@@ -12,8 +12,8 @@ filepath = os.path.join(os.path.dirname(__file__), 'data.json')
 action_handler = ActionHandler()
 
 @action_handler.handler('describe')
-def describe(**options):
-	return {'text': options['text']}
+def describe(text):
+	return {'text': text}
 
 def create_handler(endpoint):
 	path = endpoint['_self']['href']
@@ -21,8 +21,10 @@ def create_handler(endpoint):
 
 	@app.route(path, methods=methods, endpoint=path)
 	def handler():
-		action = endpoint['_self']['methods'][request.method][0]
-		result = action_handler(action['action'], action.get('options', None))
+		actions = endpoint['_self']['methods'][request.method]
+		result = {}
+		for action in actions:
+			result.update(action_handler(action['action'], action.get('options', None)))
 		result.update({'_links': endpoint['_links']})
 		return json.dumps(result)
 	return handler
@@ -39,4 +41,5 @@ def index():
 def client():
 	return render_template('client.html')
 
-app.run(port=5000)
+if __name__ == '__main__':
+	app.run(port=5000)

@@ -52,7 +52,7 @@
 			"POST": [{
 				"action": "describe",
 				"options": {
-					"text": "You hear the sound of a rock landing between the fooliage."
+					"text": "You hear the sound of a rock landing between the fooliage and something moving. Better go back."
 				}
 			}]
 		}
