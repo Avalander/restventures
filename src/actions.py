@@ -8,8 +8,8 @@ class ActionHandler:
 			return fun
 		return inner
 
-	def __call__(self, name, options):
-		return self._handlers[name](**options)
+	def __call__(self, name, options=None):
+		return self._handlers[name](**options or {})
 
 	def concat(self, other):
 		new = ActionHandler()
