@@ -13,11 +13,11 @@
 	},
 	"_links": [{
 		"href": "/house",
-		"ref": "house",
+		"ref": "Walk to the house",
 		"method": "GET"
 	}, {
 		"href": "/forest",
-		"ref": "forest",
+		"ref": "Walk to the forest",
 		"method": "GET"
 	}]
 }, {
@@ -35,7 +35,7 @@
 	},
 	"_links": [{
 		"href": "/road",
-		"ref": "back",
+		"ref": "Go back to the road",
 		"method": "GET"
 	}]
 }, {
@@ -59,11 +59,11 @@
 	},
 	"_links": [{
 		"href": "/road",
-		"ref": "road",
+		"ref": "Go back to the road",
 		"method": "GET"
 	}, {
 		"href": "/forest",
-		"ref": "throw rock",
+		"ref": "Throw rock",
 		"method": "POST"
 	}]
 }]
