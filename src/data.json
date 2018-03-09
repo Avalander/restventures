@@ -1,9 +1,15 @@
 [{
-	"text": "You have been walking for a while. It's getting dark and you reach the end of the road. There is an old house at the end of the road, and a path that goes into the forest towards east.",
 	"_self": {
 		"href": "/road",
 		"ref": "road",
-		"method": "GET"
+		"methods": {
+			"GET": [{
+				"action": "describe",
+				"options": {
+					"text": "You have been walking for a while. It's getting dark and you reach the end of the road. There is an old house at the end of the road, and a path that goes into the forest towards east."
+				}
+			}]
+		}
 	},
 	"_links": [{
 		"href": "/house",
@@ -15,11 +21,17 @@
 		"method": "GET"
 	}]
 }, {
-	"text": "As you walk through the door, the air gets colder and you start shivering. You have the feeling that something terrible is about to happen.",
 	"_self": {
 		"href": "/house",
 		"ref": "house",
-		"method": "GET"
+		"methods": {
+			"GET": [{
+				"action": "describe",
+				"options": {
+					"text": "As you walk through the door, the air gets colder and you start shivering. You have the feeling that something terrible is about to happen."
+				}
+			}]
+		}
 	},
 	"_links": [{
 		"href": "/road",
@@ -27,15 +39,31 @@
 		"method": "GET"
 	}]
 }, {
-	"text": "There is something unsettling about this forest, but you can't put your finger on what it is.",
 	"_self": {
 		"href": "/forest",
 		"ref": "forest",
-		"method": "GET"
+		"methods": {
+			"GET": [{
+				"action": "describe",
+				"options": {
+					"text": "There is something unsettling about this forest, but you can't put your finger on what it is."
+				}
+			}],
+			"POST": [{
+				"action": "describe",
+				"options": {
+					"text": "You hear the sound of a rock landing between the fooliage."
+				}
+			}]
+		}
 	},
 	"_links": [{
 		"href": "/road",
 		"ref": "road",
 		"method": "GET"
+	}, {
+		"href": "/forest",
+		"ref": "throw rock",
+		"method": "POST"
 	}]
 }]

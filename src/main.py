@@ -1,20 +1,30 @@
 import json
 import os.path
-from flask import Flask, render_template
+from flask import Flask, render_template, request
+
+from actions import ActionHandler
 
 
 app = Flask(__name__)
 
 filepath = os.path.join(os.path.dirname(__file__), 'data.json')
 
+action_handler = ActionHandler()
+
+@action_handler.handler('describe')
+def describe(**options):
+	return {'text': options['text']}
 
 def create_handler(endpoint):
 	path = endpoint['_self']['href']
-	method = endpoint['_self']['method']
+	methods = list(endpoint['_self']['methods'].keys())
 
-	@app.route(path, methods=[method], endpoint=path)
+	@app.route(path, methods=methods, endpoint=path)
 	def handler():
-		return json.dumps(endpoint)
+		action = endpoint['_self']['methods'][request.method][0]
+		result = action_handler(action['action'], action.get('options', None))
+		result.update({'_links': endpoint['_links']})
+		return json.dumps(result)
 	return handler
 
 with open(filepath) as json_data:
@@ -28,3 +38,5 @@ def index():
 @app.route('/')
 def client():
 	return render_template('client.html')
+
+app.run(port=5000)
