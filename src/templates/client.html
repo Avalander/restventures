@@ -16,8 +16,8 @@
 <script>
 	const updateDom = res => {
 		document.querySelector('#text').innerHTML = res.text
-		document.querySelector('#actions').innerHTML = res._links.map(({ href, method }) =>
-				`<li><a href="#" onclick="fetchJson('${href}', '${method}')">${method} ${href}</a></li>`).join('')
+		document.querySelector('#actions').innerHTML = res._links.map(({ href, ref, method }) =>
+				`<li><a href="#" onclick="fetchJson('${href}', '${method}')">${method} ${href}</a> [${ref}]</li>`).join('')
 	}
 
 	const fetchJson = (path, method='GET') => fetch(path, { method })
