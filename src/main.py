@@ -17,15 +17,19 @@ def describe(text):
 
 def create_handler(endpoint):
 	path = endpoint['_self']['href']
-	methods = list(endpoint['_self']['methods'].keys())
+	method = endpoint['_self']['method']
+	name = '{} {}'.format(method, path)
 
-	@app.route(path, methods=methods, endpoint=path)
+	@app.route(path, methods=[method], endpoint=name)
 	def handler():
-		actions = endpoint['_self']['methods'][request.method]
+		actions = endpoint['actions']
 		result = {}
 		for action in actions:
 			result.update(action_handler(action['action'], action.get('options', None)))
-		result.update({'_links': endpoint['_links']})
+		result.update({
+			'_links': endpoint['_links'],
+			'_self': endpoint['_self'],
+		})
 		return json.dumps(result)
 	return handler
 

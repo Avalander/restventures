@@ -1,15 +1,14 @@
 [{
+	"actions": [{
+		"action": "describe",
+		"options": {
+			"text": "You have been walking for a while. It's getting dark and you reach the end of the road. There is an old house at the end of the road, and a path that goes into the forest towards east."
+		}
+	}],
 	"_self": {
 		"href": "/road",
 		"ref": "road",
-		"methods": {
-			"GET": [{
-				"action": "describe",
-				"options": {
-					"text": "You have been walking for a while. It's getting dark and you reach the end of the road. There is an old house at the end of the road, and a path that goes into the forest towards east."
-				}
-			}]
-		}
+		"method": "GET"
 	},
 	"_links": [{
 		"href": "/house",
@@ -21,17 +20,16 @@
 		"method": "GET"
 	}]
 }, {
+	"actions": [{
+		"action": "describe",
+		"options": {
+			"text": "As you walk through the door, the air gets colder and you start shivering. You have the feeling that something terrible is about to happen."
+		}
+	}],
 	"_self": {
 		"href": "/house",
 		"ref": "house",
-		"methods": {
-			"GET": [{
-				"action": "describe",
-				"options": {
-					"text": "As you walk through the door, the air gets colder and you start shivering. You have the feeling that something terrible is about to happen."
-				}
-			}]
-		}
+		"method": "GET"
 	},
 	"_links": [{
 		"href": "/road",
@@ -39,23 +37,16 @@
 		"method": "GET"
 	}]
 }, {
+	"actions": [{
+		"action": "describe",
+		"options": {
+			"text": "There is something unsettling about this forest, but you can't put your finger on what it is."
+		}
+	}],
 	"_self": {
 		"href": "/forest",
 		"ref": "forest",
-		"methods": {
-			"GET": [{
-				"action": "describe",
-				"options": {
-					"text": "There is something unsettling about this forest, but you can't put your finger on what it is."
-				}
-			}],
-			"POST": [{
-				"action": "describe",
-				"options": {
-					"text": "You hear the sound of a rock landing between the fooliage and something moving. Better go back."
-				}
-			}]
-		}
+		"method": "GET"
 	},
 	"_links": [{
 		"href": "/road",
@@ -65,5 +56,22 @@
 		"href": "/forest",
 		"ref": "Throw rock",
 		"method": "POST"
+	}]
+}, {
+	"actions": [{
+		"action": "describe",
+		"options": {
+			"text": "You hear the sound of a rock landing between the fooliage and something moving. Better go back."
+		}
+	}],
+	"_self": {
+		"href": "/forest",
+		"ref": "forest",
+		"method": "POST"
+	},
+	"_links": [{
+		"href": "/road",
+		"ref": "Go back to the road",
+		"method": "GET"
 	}]
 }]
