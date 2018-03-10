@@ -1,6 +1,6 @@
 import json
 import os.path
-from flask import Flask, render_template, request
+from flask import Flask, render_template
 
 from actions import ActionHandler
 
