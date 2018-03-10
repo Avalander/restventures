@@ -17,7 +17,12 @@
 	const updateDom = res => {
 		document.querySelector('#text').innerHTML = res.text
 		document.querySelector('#actions').innerHTML = res._links.map(({ href, ref, method }) =>
-				`<li><a href="#" onclick="fetchJson('${href}', '${method}')">${method} ${href}</a> [${ref}]</li>`).join('')
+				`<li><a href="#" onclick="fetchJsonFromClick(event, '${href}', '${method}')">${method} ${href}</a> [${ref}]</li>`).join('')
+	}
+
+	const fetchJsonFromClick = (event, path, method) => {
+		event.preventDefault()
+		return fetchJson(path, method)
 	}
 
 	const fetchJson = (path, method='GET') => fetch(path, { method })
