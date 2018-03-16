@@ -22,4 +22,4 @@ class bag:
 
 
     def get_all(self):
-        print(self._reward)
+        print(self._reward.items())
