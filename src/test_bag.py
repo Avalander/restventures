@@ -100,16 +100,26 @@ class TestBag(unittest.TestCase):
     
     def test_get_all_should_not_allow_to_modify_bags_reward(self):
         bag = Bag()
-
         item = {'name': 'cheese', 'value': 1}
-
         bag.put(item)
+
         data = bag.get_all()
         data['cheese'] = 4
         actual = bag.get_all()
 
         self.assertEqual({'cheese': 1}, actual)
 
+    def test_take_quantity_from_item_by_name_should_not_allow_negative_quantities(self):
+        bag = Bag()
+        bag.put({'name': 'cheese', 'value': 10})
+
+        self.assertRaises(ValueError, bag.take_quantity_from_item_by_name, 'cheese', -10)
+    
+    def test_take_quantity_from_item_by_name_should_not_allow_zero(self):
+        bag = Bag()
+        bag.put({'name': 'cheese', 'value': 10})
+
+        self.assertRaises(ValueError, bag.take_quantity_from_item_by_name, 'cheese', 0)
 
 if __name__ == '__main__':
     unittest.main()
