@@ -1,12 +1,13 @@
 import json
 import os.path
 from flask import Flask, render_template
-
+from src.bag import bag
 
 app = Flask(__name__)
 
 filepath = os.path.join(os.path.dirname(__file__), 'data.json')
 
+Bag = bag()
 
 def create_handler(endpoint):
 	path = endpoint['_self']['href']
