@@ -97,6 +97,18 @@ class TestBag(unittest.TestCase):
         actual = bag.take_quantity_from_item_by_name('pedrusco',2)
 
         self.assertEqual("No hay suficiente", actual)
+    
+    def test_get_all_should_not_allow_to_modify_bags_reward(self):
+        bag = Bag()
+
+        item = {'name': 'cheese', 'value': 1}
+
+        bag.put(item)
+        data = bag.get_all()
+        data['cheese'] = 4
+        actual = bag.get_all()
+
+        self.assertEqual({'cheese': 1}, actual)
 
 
 if __name__ == '__main__':
